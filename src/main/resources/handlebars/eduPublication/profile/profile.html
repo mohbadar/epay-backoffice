@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Jolly+Lodger' rel='stylesheet' type='text/css'> -->
+    <style>
+      @font-face {
+      font-family: "Bahij Halvetica";
+      src: url("{{{fontBoldUri}}}");
+      font-weight: bold;
+    }
+  
+    @font-face {
+      font-family: "Bahij Halvetica";
+      src: url("{{{fontLightUri}}}");
+      font-weight: lighter;
+    }
+  
+    @font-face {
+      font-family: "Bahij Halvetica";
+      src: url("{{{fontRomanUri}}}");
+      font-weight: normal;
+    }
+
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, div {
+	    font-family: "Bahij Halvetica";
+    }
+
+    .green-background {
+      font-size: 14px;
+      background: rgba(3, 61, 109, 0.46);
+      border: 1px solid rgba(3, 61, 109, 0.46);
+    }
+
+    
+    div {
+        font-size: 12px;
+    }
+
+    .bold-text {
+        font-weight: bold;
+    }
+
+    table {
+        page-break-inside: auto;
+      }
+      tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+      thead {
+        display: table-header-group;
+      }
+
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      td {
+        border: 0.4px solid black;
+        padding: 5px;
+      }
+
+      .profile-image {
+          display:block; 
+          width:100%; 
+          height:auto;
+      }
+ 
+    </style>
+</head>
+<body dir="rtl">
+    <div style="margin: 10px; display: -webkit-box; display: -ms-flexbox; 
+    display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column;">
+    <div style="display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-pack: distribute; justify-content: center;">
+      <div style="padding-left:80px; margin: 10px; text-align: center;" >
+        
+      </div>
+      <div style="margin: 5px; text-align: center;  padding-left:80px;">
+        <div><img src="{{{logoImageUri}}}" height="90px" width="100px" /></div>
+        <div style="font-weight: bold;">جمهوری اسلامی افغانستان</div>
+        <div style="font-weight: bold; font-size: 10px;"></div>
+        <div style="font-weight: bold;">وزارت تحصیلات عالی</div>
+      </div>
+      <div style="margin: 10px; text-align: center; padding-right:20px;" >
+        <div style="font-weight: bold;">دولت جمهوری اسلامی افغانستان</div>
+        <div style="font-weight: bold;">وزارت تحصیلات عالی</div>
+      </div>
+
+      <div style="margin: 5px; text-align: center;  padding-right:80px;">
+        <div><img src="{{{logoImageUri}}}" height="90px" width="100px" /></div>
+        <div style="font-weight: bold;">جمهوری اسلامی افغانستان</div>
+        <div style="font-weight: bold; font-size: 10px;"></div>
+        <div style="font-weight: bold;">وزارت تحصیلات عالی</div>
+      </div>
+    </div>
+  
+    
+    <div style="margin: 10px;  display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column;">
+      <table>
+        <tbody style="text-align: center;">
+          <tr>
+            <td class="bold-text green-background" colspan="15">شهرت</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;" colspan="2">اسم و تخلص</td>
+            <td colspan="3">{{profile.firstName}} {{profile.lastName}}</td>
+    
+            <td style="font-weight: bold; width: 10%;" colspan="3">جنسیت</td>
+            <td colspan="4">{{profile.gender.nameDr}}</td>
+            <td rowspan="6" colspan="5">
+              <img class="profile-image" src="{{{profilePictureUri}}}" />
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;" colspan="2">ولد/بنت</td>
+            <td colspan="3">{{profile.fatherName}}</td>
+            <td style="font-weight: bold;" colspan="2">ولدیت</td>
+            <td colspan="3">{{profile.grandFatherName}}</td>
+          </tr>
+            
+          <tr>
+            <td style="font-weight: bold;" colspan="2">تاریخ و محل تولد</td>
+            <td colspan="4">{{profile.dob}} - {{profile.birthProvince.nameDr}}</td>
+            <td style="font-weight: bold;" colspan="3">شمارۀ تماس</td>
+            <td colspan="3">{{profile.phone}}</td>
+          </tr>
+    
+          <tr>
+            
+            <td style="font-weight: bold;" colspan="3">آدرس الکترونیکی</td>
+            <td colspan="13">{{profile.email}}</td>
+          </tr>
+    
+          <tr>
+            <td style="font-weight: bold;" rowspan="2" colspan="2">سکونت</td>
+            <td style="font-weight: bold;">اصلی</td>
+            <td>{{profile.originalProvince.nameDr}}</td>
+            <td>{{profile.originalVillage}}</td>
+            <td colspan="3">{{profile.originalDistrict.nameDr}}</td>
+            <td style="font-weight: bold;" colspan="2" rowspan="2">شماره تذکره</td>
+            <td style="font-weight: bold;">الکترونیکی</td>
+            <td colspan="4">{{profile.enid}}</td>
+          </tr>
+    
+          <tr>
+            <td style="font-weight: bold;">فعلی</td>
+            <td >{{profile.currentProvince.nameDr}}</td>
+            <td>{{profile.currentVillage}}</td>
+            <td colspan="3">{{profile.currentDistrict.nameDr}}</td>
+            <td style="font-weight: bold;">ورقی</td>
+            <td colspan="4">{{#if profile.tazkiraNumber}} ش ({{profile.tazkiraNumber}}) ج ({{profile.tazkiraTog}}) ص ({{profile.tazkiraPage}}) ث ({{profile.tazkiraRegister}}) {{else}}ندارد{{/if}} </td>
+          </tr>
+          <tr>
+            <td class="bold-text green-background" colspan="15">سوابق تعلیمی و تحصیلی</td>
+          </tr>
+    
+          
+          <tr>
+            <td style="font-weight: bold;" colspan="3">درجه تحصیل</td>
+            <td style="font-weight: bold;" colspan="2">رشتۀ تحصیل</td>
+            <td style="font-weight: bold;" colspan="3">موسسه تحصیلی</td>
+            <td style="font-weight: bold;" colspan="3">محل تحصیل</td>
+            <td style="font-weight: bold;" colspan="2">سال شمولیت</td>
+            <td style="font-weight: bold;" colspan="2">سال فراغت</td>
+          </tr>
+
+          {{#each education as |item index|}}
+          <tr>
+            <td style="font-weight: bold;" colspan="3">{{item.level.nameDr}}</td>
+            <td colspan="2">{{item.fieldOfStudy}}</td>
+            <td colspan="3">{{item.university}}</td>
+            <td colspan="3">{{item.country.nameDr}}</td>
+            <td colspan="2">{{item.startDate}}</td>
+            <td colspan="2">{{item.graduationDate}}</td>
+          </tr>
+          {{/each}}
+
+          <tr>
+            <td class="bold-text green-background" colspan="15">سوابق کاری</td>
+          </tr>
+    
+          <tr>
+            <td style="font-weight: bold;" colspan="3">عنوان بست</td>
+            <td style="font-weight: bold;" colspan="2">پوهنتون/دانشگاه</td>
+            <td style="font-weight: bold;" colspan="3">پوهنخی</td>
+            <td style="font-weight: bold;" colspan="3">دیپاتمنت</td>
+            <td style="font-weight: bold;" colspan="3">تاریخ آغاز</td>
+          </tr>
+    
+          {{#each profileJobs as |item index|}}
+          <tr>
+            <td colspan="3">{{item.position.nameDr}}</td>
+            <td colspan="2">{{item.university.nameDr}}</td>
+            <td colspan="3">{{item.faculty.nameDr}}</td>
+            <td colspan="3">{{item.department.nameDr}}</td>
+            <td colspan="3">{{item.startDate}}</td>
+            
+          </tr>
+          {{/each}}
+ 
+        </tbody>
+      </table>
+    </div>
+    
+    <div style="margin: 10px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row;
+     -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between;">
+      <div>آدرس:جوار پوهنتون/دانشگاه کابل، کابل - افغانستان</div>
+      <div>آدرس الکترونیکی: info@mohe.gov.af</div>
+      <div>تیلیفون: 00 / 00</div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<style>
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontBoldUri}}}");
+        font-weight: bold;
+    }
+
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontLightUri}}}");
+        font-weight: lighter;
+    }
+
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontRomanUri}}}");
+        font-weight: normal;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    div,
+    p {
+        font-family: "Bahij Halvetica";
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body dir="rtl" style="margin: 0; padding: 0;">
+   
+    <div class="QR-code" style="display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;
+    -ms-flex-direction: row;
+        flex-direction: row;
+-webkit-box-pack: end;
+    -ms-flex-pack: end;
+        justify-content: flex-end;">
+        <div>
+            <img src="{{serverApi}}/api/public/documents/{{documentId}}/genQRCode/150/150" height="150"
+                width="150" />
+        </div>
+    </div>
+        
+
+
+</body>
+
+</html>

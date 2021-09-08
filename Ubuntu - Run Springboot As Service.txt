@@ -1,0 +1,136 @@
+
+<packaging>jar</packaging>
+
+<build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <executable>true</executable>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+
+https://computingforgeeks.com/install-wkhtmltopdf-on-ubuntu-debian-linux/
+
+## Install wkhtmltopdf & wkhtmltoimage  #########################################
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+sudo apt install ./wkhtmltox_0.12.6-1.bionic_amd64.deb
+wkhtmltopdf --version
+
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb
+sudo apt install ./wkhtmltox_0.12.6-1.focal_amd64.deb
+wkhtmltopdf --version
+
+wkhtmltopdf https://google.com google.pdf
+file google.pdf
+
+
+sudo apt-get autoremove
+
+
+- sudo apt update
+sudo apt install default-jre
+
+Install Postgresql
+- sudo apt install postgresql postgresql-contrib
+Data directory: /var/lib/postgresql/12/main
+Log file: /var/log/postgresql/postgresql-12-main.log
+/etc/postgresql/12/main/postgresql.conf
+
+listen_addresses = '*'
+
+/etc/postgresql/12/main/pg_hba.conf
+
+host    all     all     0.0.0.0/0       md5
+
+
+
+------------- increase the file upload size -----------------
+1.  modify /etc/nginx/nginx.conf
+2.  add this  " client_max_body_size 200M; " 
+
+http{
+client_max_body_size 200M; 
+}
+-------------------------------------------------------------
+
+
+
+
+sudo mkdir /var/officems
+sudo mkdir /var/officems/logs
+# sudo touch /var/officems/officems.conf
+
+sudo useradd bigdata_user
+
+sudo touch /etc/systemd/system/officems.service
+sudo nano /etc/systemd/system/officems.service
+--------------------------------------------------------
+[Unit]
+Description= OfficeMS Application
+After=syslog.target
+
+[Service]
+User=bigdata_user
+ExecStart=/var/officems/officems.jar
+SuccessExitStatus=143
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------------------------------
+
+sudo mkdir /upload
+sudo mkdir /upload/tmp
+sudo mkdir /upload/reception
+sudo mkdir /upload/reception/visitors
+sudo mkdir /upload/reception/vehicles
+sudo mkdir /upload/profile
+sudo mkdir /upload/avatar
+sudo mkdir /upload/doc_mng
+sudo mkdir /upload/doc_mng/documents
+sudo mkdir /upload/doc_mng/gallery
+sudo mkdir /upload/task_mng
+sudo mkdir /upload/task_mng/tasks
+sudo chown -R bigdata_user:bigdata_user /upload
+
+sudo service officems stop
+sudo rm -rf /var/officems/officems.jar
+sudo mv ~/officems.jar /var/officems/
+
+
+sudo chown bigdata_user:bigdata_user /var/officems/officems.jar
+sudo chmod 500 /var/officems/officems.jar
+
+
+sudo systemctl enable officems.service
+sudo systemctl daemon-reload
+
+sudo service officems start
+
+## Logs
+sudo journalctl -u officems.service
+sudo journalctl -u officems.service -f
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.auroria.io/spring-boot-as-systemd-service/

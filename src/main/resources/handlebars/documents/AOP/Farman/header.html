@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<style>
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontBoldUri}}}");
+        font-weight: bold;
+    }
+
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontLightUri}}}");
+        font-weight: lighter;
+    }
+
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontRomanUri}}}");
+        font-weight: normal;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    div,
+    p {
+        font-family: "Bahij Halvetica";
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body dir="rtl" style="margin: 0; padding: 0;">
+    <div style="padding-bottom: 30px;">
+        <div class="header"
+            style="display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between;">
+            <div class="right-logo"
+                style="display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; width:58%; -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end;">
+                <img src="{{serverApi}}/api/public/download-image/1" height="150" width="150" />
+            </div>
+            <div
+                style="display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column;">
+                <div>ګنه/شماره: {{document.documentNo}}</div>
+                <div>نیټه/تاریخ: {{documentDate}}</div>
+            </div>
+    
+    
+        </div>
+        <div style="
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex; 
+                -webkit-box-orient: vertical; 
+                -webkit-box-direction: normal; 
+                    -ms-flex-direction: column; 
+                        flex-direction: column; 
+                -webkit-box-align: center; 
+                    -ms-flex-align: center; 
+                        align-items: center; 
+                font-size: 20px; 
+                font-weight: 600; 
+                line-height: 30px;">
+                <div>{{document.title}}  په اړه د{{ document.issuingAuthority.nameDr}}</div>
+                <div style="margin-top: 30px; font-size: 40px;">فرمان</div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

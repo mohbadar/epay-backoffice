@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<style>
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontBoldUri}}}");
+        font-weight: bold;
+    }
+
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontLightUri}}}");
+        font-weight: lighter;
+    }
+
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontRomanUri}}}");
+        font-weight: normal;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    div,
+    p {
+        font-family: "Bahij Halvetica";
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maktub</title>
+</head>
+
+<body dir="rtl">
+    <div style="padding-bottom: 30px">
+        <div class="header" style="display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column;">
+            <div class="title-text" style="display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center;">
+                <div class="title-pashto" style="display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center;">
+                    <div>د افغانستان اسلامي جمهوري دولت</div>
+                    <div>د جمهوري ریاست د چارو ادارې لوی ریاست</div>
+                </div>
+                <div class="title-logo" style="
+                display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center;">
+                    <img src="{{serverApi}}/api/public/download-image/1" height="150" width="150" />
+                        <div style="margin-top: 10px;"><strong>Islamic Republic of Afghanistan</strong></div>
+                        <div>Administrative Office of the President</div>
+                    <div class="department-header" style="line-height: 1 !important;">
+                        {{{departmentHeader}}}
+                    </div>
+                </div>
+                <div class="title-dari" style="display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center;">
+                    <div>دولت جمهوری اسلامی افغانستان</div>
+                    <div>ریاست عمومی اداره امور ریاست جمهوری</div>
+                </div>
+            </div>
+        </div>
+
+        <div
+                style="display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column;">
+                <div>ګنه/شماره&nbsp;:&nbsp; {{document.documentNo}}</div>
+                <div>نیټه/تاریخ&nbsp;:&nbsp; {{documentDate}}<div style="float: left">درجه استعجالیت&nbsp;:&nbsp; {{#eq document.documentPriorityType "NORMAL"}}عادی{{/eq}} {{#eq document.documentPriorityType "MEDIUM"}}متوسط{{/eq}} {{#eq document.documentPriorityType "URGENT"}}عاجل{{/eq}} </div>
+            </div>
+            </div>
+        <hr style="border: 1px solid black" />
+
+    </div>
+        
+            <div style="margin-top: 10px;">
+                {{{content}}}
+            </div>
+
+            <div style="display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center;">
+                <div style="display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column;">
+                    <div>آدرس: ریاست عمومی اداره امور ریاست ج.ا.ا، قصر مرمرین، کابل - افغانستان</div>
+                    <div>Councils.Coordination@arg.gov.af</div>
+                    <div>Tel: 0202143880 / 02022143882</div>
+                </div>
+                <div>
+                    <img src="{{serverApi}}/api/public/documents/{{documentId}}/genQRCode/150/150" height="150" width="150" />
+                </div>
+                
+        </div>
+        
+</body>
+
+</html>

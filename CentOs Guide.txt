@@ -1,0 +1,166 @@
+update the DNF package repository cache
+- sudo dnf update -y
+- sudo dnf makecache
+
+Listing All Available Packages
+- sudo dnf list --all
+
+
+- sudo dnf install nginx
+
+- sudo systemctl enable nginx
+- sudo systemctl start nginx
+- sudo systemctl status nginx
+
+content directory
+cd /usr/share/nginx/
+
+Server Configuration directory
+cd /etc/nginx
+
+check status of firewall
+- systemctl status firewalld
+
+install weget and nano 
+- sudo dnf install wget
+- sudo dnf install nano
+- sudo dnf install unzip
+
+Install Java
+- sudo dnf install java-11-openjdk
+
+Install Tomcat 9 
+- sudo wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.43/bin/apache-tomcat-9.0.43.tar.gz
+- sudo tar -xvf apache-tomcat-9.0.43.tar.gz
+- sudo mv apache-tomcat-9.0.43 /usr/local/tomcat
+
+- echo "export CATALINA_HOME="/usr/local/tomcat"" >> ~/.bashrc
+- source ~/.bashrc
+
+Create tomcat user and group
+- sudo groupadd --system tomcat
+- sudo useradd -d /usr/share/tomcat -r -s /bin/false -g tomcat tomcat
+- sudo chown -R tomcat:tomcat /usr/local/tomcat
+
+Configure Tomcat 9 Systemd service
+- sudo touch /etc/systemd/system/tomcat.service
+- sudo nano /etc/systemd/system/tomcat.service
+-- -----------------------------------------------------
+[Unit]
+Description=Tomcat Server
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=tomcat
+Group=tomcat
+
+Environment=JAVA_HOME=/usr/lib/jvm/jre
+Environment='JAVA_OPTS=-Djava.awt.headless=true'
+Environment=CATALINA_HOME=/usr/local/tomcat
+Environment=CATALINA_BASE=/usr/local/tomcat
+Environment=CATALINA_PID=/usr/local/tomcat/temp/tomcat.pid
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
+ExecStart=/usr/local/tomcat/bin/catalina.sh start
+ExecStop=/usr/local/tomcat/bin/catalina.sh stop
+
+[Install]
+WantedBy=multi-user.target
+-- -----------------------------------------------------
+
+- sudo sh /usr/local/tomcat/bin/startup.sh
+- sudo sh /usr/local/tomcat/bin/shutdown.sh
+
+- sudo systemctl daemon-reload
+- sudo systemctl start tomcat
+- sudo systemctl enable tomcat
+
+cd /etc/nginx/nginx.conf
+
+mkdir sites-available
+mkdir sites-enabled
+sudo touch sites-available/gopms.conf
+sudo nano sites-available/gopms.conf
+
+###################################
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    access_log /var/log/nginx/gopms-access.log;
+    error_log /var/log/nginx/gopms-error.log;
+
+    # This is the path for dist file angular applicaiton
+    root /usr/share/nginx/gca_web;
+
+    location / {
+            try_files $uri $uri/ /index.html;
+    }
+
+    location /api/ {
+            proxy_pass http://127.0.0.1:8080/api/;
+    }
+}
+###################################
+
+ln -s /etc/nginx/sites-available/gopms.conf /etc/nginx/sites-enabled/
+
+sudo systemctl restart nginx
+sudo nginx -t
+
+sudo setsebool -P httpd_can_network_connect 1
+
+
+# Postgresql installation
+sudo dnf install postgresql-server
+sudo postgresql-setup --initdb
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+sudo systemctl status postgresql
+
+
+sudo - postgres
+sudo nano /var/lib/pgsql/data/postgresql.conf
+listen_addresses = '*'
+
+sudo nano /var/lib/pgsql/data/pg_hba.conf
+host    all             all	        0.0.0.0/0	        md5
+host    all             all             127.0.0.1/32            md5
+
+
+change centos root password
+- sudo passwd
+
+
+
+- sudo su - postgres
+- psql
+- CREATE DATABASE gopms;
+- CREATE ROLE gopms_user LOGIN PASSWORD 'secretAbc';
+----- create user gopms_user with encrypted password 'secretAbc';
+- GRANT CONNECT ON DATABASE gopms TO gopms_user;
+- grant all privileges on database gopms to gopms_user;
+
+- connect to database: \c gopms;
+- GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO gopms_user;
+- GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO gopms_user;
+- GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO gopms_user;
+- GRANT ALL PRIVILEGES ON SCHEMA public TO gopms_user;
+- ALTER SCHEMA public OWNER TO gopms_user;
+
+Upload client side code
+- sudo sh /usr/local/tomcat/bin/shutdown.sh
+- sudo rm -rf /usr/local/tomcat/webapps/*
+- sudo rm -rf /usr/local/tomcat/logs/*
+-sudo rm -rf /usr/local/tomcat/webapps/logs/*
+-sudo mv ROOT.war /usr/local/tomcat/webapps/
+-sudo sh /usr/local/tomcat/bin/startup.sh
+
+
+-sudo rm -rf /usr/share/nginx/dist.zip
+-sudo rm -rf /usr/share/nginx/dist
+-sudo rm -rf /usr/share/nginx/gop_web
+-sudo mv dist.zip /usr/share/nginx/
+- cd /usr/share/nginx/
+- sudo unzip dist.zip
+- sudo cp -a dist/. gca_web/

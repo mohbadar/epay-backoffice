@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Jolly+Lodger' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 85%;
+        }
+
+        .body {
+            text-align: center;
+        }
+
+        #separator {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        #header {
+            margin: 0 auto;
+        }
+
+        #sno {
+            font-size: 14px;
+        }
+
+        table{
+            width: 100%;            
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 4px;
+        }
+        
+        #footer-text {
+            font-size: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+        float: left;
+        width: 46%;
+        padding: 10px;
+        height: 25%; /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    </style>
+</head>
+{{#eq language "en"}}
+<body>
+{{else}}
+<body dir="rtl">
+{{/eq}}
+
+    <div class="row">
+        <div class="column" style="margin-right: 2%">
+            <div class="body">
+                <div id="header">
+                    <img src="{{{logoUri}}}">
+                </div>
+                <div id="content">
+                    {{#eq language "en"}}
+                        <strong><p id="sno" style="text-align: left; direction: ltr;">Serial No. <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}
+                    {{#eq language "dr"}}
+                        <strong><p id="sno" style="text-align: right; direction: rtl;">نمبر مسلسل &nbsp; <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        <strong><p id="sno" style="text-align: right; direction: rtl;">مسلسل شماره &nbsp; <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}
+        
+                    {{#eq language "en"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: ltr; text-align: left;">
+                    {{/eq}}
+                    {{#eq language "dr"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+                    {{/eq}}
+                        <tr>
+                            {{#eq language "en"}}
+                                <th width="25%">Vehicle Details</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                                <th width="25%">مشخصات عراده</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                                <th width="25%">د نقلیه وسيلې معلومات</th>
+                            {{/eq}}
+                            <td width="75%" colspan="3">{{vehicleDetails}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Driver Name</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">اسم راننده</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د چلوونکي نوم</th>
+                            {{/eq}}
+                            <td width="25%">{{driverName}}</td>
+                            {{#eq language "en"}}
+                            <th width="25%">Exit Date</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">تاریخ حرکت</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د حرکت کولو نېټه</th>
+                            {{/eq}}
+                            <td width="25%">{{pickupDate}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Exit Time</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">وقت رفت</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د وتلو وخت</th>
+                            {{/eq}}
+                            <td width="25%">{{pickupTime}}</td>
+                            {{#eq language "en"}}
+                            <th width="25%">Return Time</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">وقت برگشت</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د بېرته راتللو وخت</th>
+                            {{/eq}}
+                            <td width="25%">{{returnTime}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Requesting Department</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">دیپارتمنت متقاضی</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">غوښتونکې ډیپارټمنټ</th>
+                            {{/eq}}
+                            <td width="25%">{{requestingDepartmentName}}</td>
+                            {{#eq language "en"}}
+                            <th width="25%">Employee Name</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">اسم استفاده کننده</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د استفاده کوونکي نوم</th>
+                            {{/eq}}
+                            <td width="25%">{{employeeName}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Pick Up Location</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">محل مبدأ</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%"> د پیل موقعیت</th>
+                            {{/eq}}
+                            <td width="25%">{{pickupLocation}}</td>
+                            {{#eq language "en"}}
+                            <th width="25%">Drop Off Location</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">محل مقصد</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د پای موقعیت</th>
+                            {{/eq}}
+                            <td width="25%">{{dropOffLocation}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Details</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">هدف ګردش</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د ګرځېدلو هدف</th>
+                            {{/eq}}
+                            <td width="75%" colspan="3">{{details}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Start KM</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">شروع کیلومتر</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د پیل کیلو متر</th>
+                            {{/eq}}
+                            <td width="25%">{{startKM}}</td>
+                            {{#eq language "en"}}
+                            <th width="25%">End KM</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">ختم کیلومتر</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د پای کیلو متر</th>
+                            {{/eq}}
+                            <td width="25%">{{endKM}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th>Agent of Transport</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th>عضو ترانسپورت</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th>د ترانسپورټ غړې</th>
+                            {{/eq}}
+                            {{#eq language "en"}}
+                            <th>Manager of Transport</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th>مدیر ترانسپورت</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th>د ترانسپورټ مدیر</th>
+                            {{/eq}}
+                            {{#eq language "en"}}
+                            <th colspan="2">Director of Administration and Services</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th colspan="2">رئیس اداری و خدمات</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th colspan="2">د ادارې او خدماتو رئیس</th>
+                            {{/eq}}
+                        </tr>
+                    </table>
+                    {{#eq language "en"}}
+                        <p id="footer-text" dir="ltr">For Complaints: 450 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            NSIA.GOV.AF
+                        </p>
+                    {{/eq}}
+                    {{#eq language "dr"}}
+                        <p id="footer-text" dir="rtl">رسیده گی به شکایات: ۴۵۰ 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            NSIA.GOV.AF
+                        </p>
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        <p id="footer-text" dir="rtl">شکایتونو ته رسیده ګي: ۴۵۰
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            NSIA.GOV.AF
+                        </p>
+                    {{/eq}}
+                    
+                </div>  
+            </div>
+        </div>
+
+
+        <div class="column" style="margin-left: 2%">
+            <div class="body">
+                <div id="header">
+                    <img src="{{{logoUri}}}">
+                </div>
+                <div id="content">
+                    {{#eq language "en"}}
+                        <strong><p id="sno" style="text-align: left; direction: ltr;">Serial No. <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}
+                    {{#eq language "dr"}}
+                        <strong><p id="sno" style="text-align: right; direction: rtl;">نمبر مسلسل &nbsp; <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        <strong><p id="sno" style="text-align: right; direction: rtl;">مسلسل شماره &nbsp; <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}
+        
+                    {{#eq language "en"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: ltr; text-align: left;">
+                    {{/eq}}
+                    {{#eq language "dr"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+                    {{/eq}}
+                        <tr>
+                            {{#eq language "en"}}
+                                <th width="25%">Vehicle Details</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                                <th width="25%">مشخصات عراده</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                                <th width="25%">د نقلیه وسيلې معلومات</th>
+                            {{/eq}}
+                            <td width="75%" colspan="3">{{vehicleDetails}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Driver Name</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">اسم راننده</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د چلوونکي نوم</th>
+                            {{/eq}}
+                            <td width="25%">{{driverName}}</td>
+                            {{#eq language "en"}}
+                            <th width="25%">Exit Date</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">تاریخ حرکت</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د حرکت کولو نېټه</th>
+                            {{/eq}}
+                            <td width="25%">{{pickupDate}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Exit Time</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">وقت رفت</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د وتلو وخت</th>
+                            {{/eq}}
+                            <td width="25%">{{pickupTime}}</td>
+                            {{#eq language "en"}}
+                            <th width="25%">Return Time</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">وقت برگشت</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د بېرته راتللو وخت</th>
+                            {{/eq}}
+                            <td width="25%">{{returnTime}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Requesting Department</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">دیپارتمنت متقاضی</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">غوښتونکې ډیپارټمنټ</th>
+                            {{/eq}}
+                            <td width="25%">{{requestingDepartmentName}}</td>
+                            {{#eq language "en"}}
+                            <th width="25%">Employee Name</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">اسم استفاده کننده</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د استفاده کوونکي نوم</th>
+                            {{/eq}}
+                            <td width="25%">{{employeeName}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Pick Up Location</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">محل مبدأ</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%"> د پیل موقعیت</th>
+                            {{/eq}}
+                            <td width="25%">{{pickupLocation}}</td>
+                            {{#eq language "en"}}
+                            <th width="25%">Drop Off Location</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">محل مقصد</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د پای موقعیت</th>
+                            {{/eq}}
+                            <td width="25%">{{dropOffLocation}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Details</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">هدف ګردش</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د ګرځېدلو هدف</th>
+                            {{/eq}}
+                            <td width="75%" colspan="3">{{details}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th width="25%">Start KM</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">شروع کیلومتر</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د پیل کیلو متر</th>
+                            {{/eq}}
+                            <td width="25%">{{startKM}}</td>
+                            {{#eq language "en"}}
+                            <th width="25%">End KM</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th width="25%">ختم کیلومتر</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th width="25%">د پای کیلو متر</th>
+                            {{/eq}}
+                            <td width="25%">{{endKM}}</td>
+                        </tr>
+                        <tr>
+                            {{#eq language "en"}}
+                            <th>Agent of Transport</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th>عضو ترانسپورت</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th>د ترانسپورټ غړې</th>
+                            {{/eq}}
+                            {{#eq language "en"}}
+                            <th>Manager of Transport</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th>مدیر ترانسپورت</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th>د ترانسپورټ مدیر</th>
+                            {{/eq}}
+                            {{#eq language "en"}}
+                            <th colspan="2">Director of Administration and Services</th>
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                            <th colspan="2">رئیس اداری و خدمات</th>
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                            <th colspan="2">د ادارې او خدماتو رئیس</th>
+                            {{/eq}}
+                        </tr>
+                    </table>
+                    {{#eq language "en"}}
+                        <p id="footer-text" dir="ltr">For Complaints: 450 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            NSIA.GOV.AF
+                        </p>
+                    {{/eq}}
+                    {{#eq language "dr"}}
+                        <p id="footer-text" dir="rtl">رسیده گی به شکایات: ۴۵۰ 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            NSIA.GOV.AF
+                        </p>
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        <p id="footer-text" dir="rtl">شکایتونو ته رسیده ګي: ۴۵۰
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            NSIA.GOV.AF
+                        </p>
+                    {{/eq}}
+                    
+                </div>  
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

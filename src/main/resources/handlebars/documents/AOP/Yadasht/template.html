@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontBoldUri}}}");
+        font-weight: bold;
+    }
+
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontLightUri}}}");
+        font-weight: lighter;
+    }
+
+    @font-face {
+        font-family: "Bahij Halvetica";
+        src: url("{{{fontRomanUri}}}");
+        font-weight: normal;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    div,
+    p {
+        font-family: "Bahij Halvetica";
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body dir="rtl">
+    <div class="header" style="display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex; 
+                            -webkit-box-orient: vertical; 
+                            -webkit-box-direction: normal; 
+                                -ms-flex-direction: column; 
+                                    flex-direction: column; 
+                            -webkit-box-align: center; 
+                                -ms-flex-align: center; 
+                                    align-items: center;">
+        <div class="right-logo">
+            <img src="{{{serverApi}}}/api/public/download-image/1" height="150" width="150" />
+        </div>
+
+        <div style="
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex; 
+            -webkit-box-orient: vertical; 
+            -webkit-box-direction: normal; 
+                -ms-flex-direction: column; 
+                    flex-direction: column; 
+            -webkit-box-align: center; 
+                -ms-flex-align: center; 
+                    align-items: center; 
+            font-size: 16px; 
+            font-weight: 600; 
+            line-height: 30px;">
+            <div>د افغانستان اسلامي جمهوریت</div>
+            <div>د جمهوری ریاست د چارو ادارې لوی ریاست</div>
+            <div>
+                {{{departmentHeader}}}
+            </div>
+        </div>
+
+    </div>
+
+    <div
+        style="display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between;">
+        <div>ګنه/شماره&nbsp;:&nbsp; {{document.documentNo}}</div>
+        <div>نیټه/تاریخ&nbsp;:&nbsp; {{createdAt}}</div>
+    </div>
+
+    <div
+        style="font-weight: 600; font-size: 18px; margin-top: 15px; padding: 5px; width: 30%; color: white; background-color:#009999">
+        یادداشت</div>
+    <div
+        style="display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row;">
+        <!-- <div
+            style="font-weight: 600; font-size: 18px; padding: 2px; width: 10%; color: white; background-color:#009999">
+            در مورد</div>
+        <div style="width: 90%; padding: 2px; background-color:#d6e3bc"></div> -->
+    </div>
+
+    <div style="margin-top: 5px; font-weight: 600; font-size: 18px;">
+        جلالتمآب رئیس جمهوری اسلامی افغانستان!
+    </div>
+    <div style="margin-bottom: 5px; font-size: 18px;">
+        با ابراز تمنیات و آرزومندیهای نیک؛
+    </div>
+
+
+    {{#each document.noteSections as |item index|}}
+
+    <div style="font-weight: 600; padding: 4px; background-color:#d6e3bc">{{item.title}}&nbsp;:&nbsp;</div>
+
+    <div style="   display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+        justify-content: space-between;">
+        <div style="margin-top: 5px; margin-bottom: 10px;">
+            {{{item.content}}}
+        </div>
+
+        {{/each}}
+
+        <div style="margin-top: 30px;">
+            <div style="text-align: center;">با احترام</div>
+            <div style="text-align: center;">داکتر فضل محمود فضلی</div>
+            <div style="text-align: center;">رئیس عمومی اداره امور ریاس جمهوری ا.ا</div>
+        </div>
+
+        <div class="QR-code" style="display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;">
+            <div>
+                <img src="{{{serverApi}}}/api/public/documents/{{documentId}}/genQRCode/150/150" height="150"
+                    width="150" />
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

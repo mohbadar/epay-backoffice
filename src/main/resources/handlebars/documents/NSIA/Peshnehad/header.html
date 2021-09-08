@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+	@font-face {
+		font-family: "Bahij Halvetica";
+		src: url("{{{fontBoldUri}}}");
+		font-weight: bold;
+	}
+
+	@font-face {
+		font-family: "Bahij Halvetica";
+		src: url("{{{fontLightUri}}}");
+		font-weight: lighter;
+	}
+
+	@font-face {
+		font-family: "Bahij Halvetica";
+		src: url("{{{fontRomanUri}}}");
+		font-weight: normal;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.h1,
+	.h2,
+	.h3,
+	.h4,
+	.h5,
+	.h6,
+	div,
+	p {
+		font-family: "Bahij Halvetica";
+	}
+
+	.table-content {
+		position: relative;
+		width: 100%;
+		table-layout: fixed !important;
+		overflow-wrap: break-word !important;
+		border: 1px solid gray;
+		border-collapse: collapse;
+	}
+
+	.table-content td {
+		border: 1px solid grey;
+		vertical-align: center;
+		width: fit-content;
+	}
+
+	.table-content th {
+		border: 1px solid grey;
+		vertical-align: center;
+	}
+</style>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body dir="rtl">
+	<div class="header" style="display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row;
+-webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+        justify-content: space-between;">
+		<div class="right-logo">
+			<img src="{{serverApi}}/api/public/download-image/1" height="150" width="150" />
+		</div>
+
+		<div>
+			<div class="text" style="display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+				flex-direction: row;
+		-webkit-box-pack: justify;
+			-ms-flex-pack: justify;
+				justify-content: center;">
+
+				<div style="display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+					padding: 10px;
+					flex-direction: column;">
+					<div>د افغانستان اسلامي جمهوري دولت</div>
+					<div>د احصائیي او معلوماتو ملی اداره</div>
+				</div>
+
+				<div style="display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+				padding: 10px;
+				-ms-flex-direction: column;
+					flex-direction: column;">
+					<div>دولت جمهوری اسلامی افغانستان</div>
+					<div>ادارۀ ملی احصائیه و معلومات</div>
+				</div>
+			</div>
+
+			<div style="display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+	  -webkit-box-align: center;
+		  -ms-flex-align: center;
+			  align-items: center;
+				flex-direction: column;">
+				<div>Islamic Republic of Afghanistan</div>
+				<div>National Statistics and Information Authority</div>
+			</div>
+			<div style="display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+	  -webkit-box-align: center;
+		  -ms-flex-align: center;
+			  align-items: center;
+				flex-direction: column;">
+				<div>ریاست دفتر</div>
+			</div>
+		</div>
+		<div class="left-logo">
+			<img src="{{serverApi}}/api/public/download-image/2" height="150" width="150" />
+		</div>
+	</div>
+</body>
+
+</html>

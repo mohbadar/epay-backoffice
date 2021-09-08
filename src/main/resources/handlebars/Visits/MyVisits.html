@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Jolly+Lodger' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 85%;
+        }
+
+        .body {
+            text-align: center;
+        }
+
+        #separator {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        #header {
+            margin: 0 auto;
+        }
+
+        #sno {
+            font-size: 14px;		
+        }
+
+        table{
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 4px;
+        }
+        
+        #footer-text {
+            font-size: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+        float: left;
+        width: 100%;
+        padding: 10px;
+        /*height: 44%; */ /* Should be removed. Only for demonstration */
+		margin-bottom: 30px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    </style>
+</head>
+<!--{{#eq language "en"}}
+<body>
+{{else}}
+<body dir="rtl">
+{{/eq}}-->
+<body>
+
+    <div class="row">
+        <div class="column">
+            <div class="body">
+                <div id="header">
+					<div style="width: 200px; height: 100px; float: right">
+						<img src="nsia-logo.svg">
+					</div>
+					<div style="margin-right: 220px;">
+						<br><br>
+						<p style="text-align: right; font-size: 12px;"><strong>مشخصات واسطه نقلیه مربوط (معاونیت سیستم های معلوماتی) اداره ملی احصائیه و معلومات</strong></p>
+						<br>
+					</div>
+                </div>
+                <div id="content">
+                    <!--{{#eq language "en"}}
+                        <strong><p id="sno" style="text-align: left; direction: ltr;">Serial No. <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}
+                    {{#eq language "dr"}}
+                        <strong><p id="sno" style="text-align: right; direction: rtl;">نمبر مسلسل &nbsp; <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        <strong><p id="sno" style="text-align: right; direction: rtl;">مسلسل شماره &nbsp; <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}-->
+					<strong><p id="sno" style="text-align: right;">مکان: &nbsp; منزل چهارم</p></strong>
+        
+                    <!--{#eq language "en"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: ltr; text-align: left;">
+                    {{/eq}}
+                    {{#eq language "dr"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+                    {{/eq}}-->
+					<table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+                        <tr>
+                            <!--{{#eq language "en"}}
+                                
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                                
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                                
+                            {{/eq}}-->
+							<th>شماره</th>
+							<th colspan="2">‎اسم</th>
+							<th colspan="2">محل وظیفه</th>
+							<th colspan="3">مشخصات</th>
+							<th>وقت</th>
+							<th>تاریخ</th>
+							<th colspan="2">اسم راننده</th>                            
+                        </tr>
+                        
+						<tr>
+							<td>1</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+                    </table>
+                    
+					<!--{{#eq language "en"}}
+					
+                    {{/eq}}
+                    {{#eq language "dr"}}
+
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        
+                    {{/eq}}-->
+					<p id="footer-text" style="direction: rtl; text-align: right;">
+						<strong>نوت:&nbsp;</strong>
+						از پوسته امنیتی دروازه اداره ملی احصائیه و معلومات خواهشمندیم تا بعد از چک و بررسی همه جانبه به واسطه متذکره اجازه داخل شده به محوطه اداره داده شود.<br>
+						حمیدالله پردیس<br>
+						رئیس انسجام ارقام بزرګ
+                    </p>
+                    
+                </div>  
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="body">
+                <div id="header">
+					<div style="width: 200px; height: 100px; float: right">
+						<img src="nsia-logo.svg">
+					</div>
+					<div style="margin-right: 220px;">
+						<br><br>
+						<p style="text-align: right; font-size: 12px;"><strong>مشخصات ملاقات تنظیم شده</strong></p>
+						<br>
+					</div>
+                </div>
+                <div id="content">
+                    <!--{{#eq language "en"}}
+                        <strong><p id="sno" style="text-align: left; direction: ltr;">Serial No. <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}
+                    {{#eq language "dr"}}
+                        <strong><p id="sno" style="text-align: right; direction: rtl;">نمبر مسلسل &nbsp; <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        <strong><p id="sno" style="text-align: right; direction: rtl;">مسلسل شماره &nbsp; <span><u>{{id}}</u></span></p></strong>
+                    {{/eq}}-->
+					<strong><p id="sno" style="text-align: right;">مکان: &nbsp; منزل چهارم</p></strong>
+        
+                    <!--{#eq language "en"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: ltr; text-align: left;">
+                    {{/eq}}
+                    {{#eq language "dr"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        <table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+                    {{/eq}}-->
+					<table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+                        <tr>
+                            <!--{{#eq language "en"}}
+                                
+                            {{/eq}}
+                            {{#eq language "dr"}}
+                                
+                            {{/eq}}
+                            {{#eq language "ps"}}
+                                
+                            {{/eq}}-->
+							<th>شماره</th>
+							<th colspan="2">‎اسم</th>
+							<th colspan="2">محل وظیفه</th>
+							<th colspan="3">مشخصات</th>
+							<th>وقت</th>
+							<th>تاریخ</th>
+							<th colspan="2">اسم راننده</th>                            
+                        </tr>
+                        
+						<tr>
+							<td>1</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td colspan="2">تمیم</td>
+							<td colspan="2">اداره احصائیه</td>
+							<td colspan="3">کرولا پلیت - ۵۸۹۵۸۴۵ به رنګ سفید</td>
+							<td>04:00</td>
+							<td>1400/3/18</td>
+							<td colspan="2">نوری</td>
+						</tr>
+                    </table>
+                    
+					<!--{{#eq language "en"}}
+					
+                    {{/eq}}
+                    {{#eq language "dr"}}
+
+                    {{/eq}}
+                    {{#eq language "ps"}}
+                        
+                    {{/eq}}-->
+					<p id="footer-text" style="direction: rtl; text-align: right;">
+						<strong>نوت:&nbsp;</strong>
+						از پوسته امنیتی دروازه اداره ملی احصائیه و معلومات خواهشمندیم تا بعد از چک و بررسی همه جانبه به واسطه متذکره اجازه داخل شده به محوطه اداره داده شود.<br>
+                    </p>
+                    
+                </div>  
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

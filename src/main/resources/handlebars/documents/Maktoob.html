@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            direction: ltr;
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            font: 10pt "Arial";
+        }
+
+        * {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        .page {
+            width: 200mm;
+            /* min-height: 297mm; */
+            padding: 5mm;
+            margin: 10mm auto;
+            border: 1px #D3D3D3 solid;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        @page {
+            size: A5;
+            margin: 0;
+        }
+
+        @media print {
+
+            html,
+            body {
+                width: 200mm;
+                /* height: 297mm; */
+            }
+
+            .page {
+                margin: 0;
+                border: initial;
+                border-radius: initial;
+                width: initial;
+                /* min-height: initial; */
+                box-shadow: initial;
+                background: initial;
+                page-break-after: always;
+            }
+        }
+
+        p {
+            font-size: medium;
+        }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+            background-color: transparent;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+        .table .table {
+            background-color: #fff;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        input[type="checkbox"] {
+            width: 8px;
+            /*Desired width*/
+            height: 8px;
+            /*Desired height*/
+		}
+		
+		.container-fluid {
+		width: 100%;
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-right: auto;
+		margin-left: auto;
+		}
+
+		.row {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		margin-right: -15px;
+		margin-left: -15px;
+		}
+
+		.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
+		.col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
+		.col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
+		.col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
+		.col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
+		.col-xl-auto {
+		position: relative;
+		width: 100%;
+		min-height: 1px;
+		padding-right: 15px;
+		padding-left: 15px;
+		}
+
+		.col-md {
+			-ms-flex-preferred-size: 0;
+			flex-basis: 0;
+			-webkit-box-flex: 1;
+			-ms-flex-positive: 1;
+			flex-grow: 1;
+			max-width: 100%;
+		}
+		.col-md-auto {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 auto;
+			flex: 0 0 auto;
+			width: auto;
+			max-width: none;
+		}
+		.col-md-1 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 8.333333%;
+			flex: 0 0 8.333333%;
+			max-width: 8.333333%;
+		}
+		.col-md-2 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 16.666667%;
+			flex: 0 0 16.666667%;
+			max-width: 16.666667%;
+		}
+		.col-md-3 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 25%;
+			flex: 0 0 25%;
+			max-width: 25%;
+		}
+		.col-md-4 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 33.333333%;
+			flex: 0 0 33.333333%;
+			max-width: 33.333333%;
+		}
+		.col-md-5 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 41.666667%;
+			flex: 0 0 41.666667%;
+			max-width: 41.666667%;
+		}
+		.col-md-6 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 50%;
+			flex: 0 0 50%;
+			max-width: 50%;
+		}
+		.col-md-7 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 58.333333%;
+			flex: 0 0 58.333333%;
+			max-width: 58.333333%;
+		}
+		.col-md-8 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 66.666667%;
+			flex: 0 0 66.666667%;
+			max-width: 66.666667%;
+		}
+		.col-md-9 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 75%;
+			flex: 0 0 75%;
+			max-width: 75%;
+		}
+		.col-md-10 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 83.333333%;
+			flex: 0 0 83.333333%;
+			max-width: 83.333333%;
+		}
+		.col-md-11 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 91.666667%;
+			flex: 0 0 91.666667%;
+			max-width: 91.666667%;
+		}
+		.col-md-12 {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 100%;
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
+
+		.form-row {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		margin-right: -5px;
+		margin-left: -5px;
+		}
+
+		.form-row > .col,
+		.form-row > [class*="col-"] {
+		padding-right: 5px;
+		padding-left: 5px;
+		}
+
+        .txt-center{
+            text-align: center;
+        }
+
+        .txt-right{
+            vertical-align: bottom;
+            text-align: right;
+        }
+
+        .txt-left{
+            text-align: left;
+        }
+
+        .pull-left {
+            margin-right: 10px;
+        }
+
+        .pull-right {
+          margin-left: 10px;
+        }
+
+        .td-border-empty th,
+        .td-border-empty td{
+            border: 0px !important;
+            padding-top: 0px;
+        }
+
+         .table td:first-child, .table th:first-child {
+            min-width: 0;
+            padding: 0;
+        }
+
+        .footer{
+            padding-top: 800px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <br />
+	<div class="form-row">
+        <div class="col-md-3">
+            <img style="margin-right: 10px; margin-top: 15px;" src="C:\Users\ahmadfaiaz\Documents\GitHub\Office_MS\src\main\resources\images\documents\nsia-logo.png" width="150px" />
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <h3>دولت جمهوری افغانستان</h3>
+                <h3>اداره ملی احصاییه و معلومات</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <h3>د افغانستان جمهوری دولت</h3>
+            <h3>د احصاییه او معلوماتی اداره</h3>
+        </div>
+
+        <div class="col-md-3">
+            <img style="margin-left: 50px" src="C:\Users\ahmadfaiaz\Documents\GitHub\Office_MS\src\main\resources\images\documents\afghanistan-flag.png" width="100px" />
+        </div>
+    </div>
+
+    <div class="form-row">
+         <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h3 class="txt-center">Islamic Republic State of Afghanistan</h3>
+            <h3 class="txt-center">National Statistics and Information Authority</h3>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h3 class="txt-center">{{fromDepartment.nameDr}}</h3>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+         <div class="col-md-4">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+            <label for="ch1">عاجل</label> &nbsp;
+
+            <label for="ch2">عادی</label> &nbsp;
+
+            <label for="ch3">مطمینانیه</label> &nbsp;
+
+            <label for="ch4">ابلاغی</label> &nbsp;
+
+            <label for="ch5">سایر</label> &nbsp;
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-4">
+            <p class="txt-right"> {{documentNo}} <strong>:شماره </strong> </p>
+            <p class="txt-right"> {{documentDate}} <strong> :تاریخ </strong> </p>
+        </div>
+    </div>
+
+   
+    <hr />
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6" dir="rtl">
+            <h3 dir="rtl">به {{toDepartment.nameDr}}!</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12" dir="rtl">
+            <p dir="rtl"> {{document.content}}</p>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group txt-center">
+                <h3>بااحترام</h3>
+            </div>
+            <div class="form-group txt-center">
+                <h3>{{fromDepartment.nameDr}}</h3>
+            </div>   
+        </div>
+    </div>
+
+    
+    <!-- <div class="footer row">
+    <hr />
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Address: 7th Nahia, Chehelsetoon Road, Near to the Khoshal </label>
+            </div>
+            <div class="form-group">
+                <label>Khan High School, Kabul, Afghanistan</label>
+            </div>
+            <div class="form-group">
+                <label>PoBox: 1254</label>
+            </div>
+            <div class="form-group">
+                <label>Web: www.nsia.gov.af</label>
+            </div>
+        </div>
+
+        <div dir="rtl" class="col-md-6">
+            <div class="form-group">
+                <label>  آدرس: ناحیه هفتم، سرک چهلستون، جوار لیسه خوشهال خان کابل، افغانستان </label>
+            </div>
+            <div class="form-group">
+                <label>پست بکس: 1254</label>
+            </div>
+            <div class="form-group">
+                <label>ویب سایت : www.nsia.gov.af</label>
+            </div>
+            <div class="form-group">
+                <label></label>
+            </div>
+        </div>
+    </div> -->
+</body>
+</html>

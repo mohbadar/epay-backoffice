@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Jolly+Lodger' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 70%;
+        }
+
+        .body {
+            text-align: center;
+        }
+
+        #separator {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        #header {
+            margin: 0 auto;
+        }
+
+        #sno {
+            font-size: 14px;		
+        }
+
+        table{
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 2px;
+        }
+        
+        #footer-text {
+            font-size: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+        /*height: 44%; */ /* Should be removed. Only for demonstration */
+		margin-bottom: 30px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    </style>
+</head>
+
+{{#eq language "en"}}
+<body>
+{{else}}
+<body dir="rtl">
+{{/eq}}
+
+    <div class="row">
+        <div class="column" style="width: 100%;">
+            <div class="body">
+                <div id="header">
+					{{#eq language "en"}}
+					<div style="width: 200px; height: 100px; float: left">
+					{{else}}
+					<div style="width: 200px; height: 100px; float: right">
+					{{/eq}}
+						<img src="{{{logoUri}}}">
+					</div>
+					{{#eq language "en"}}
+					<div style="margin-left: 220px;">
+					{{else}}
+					<div style="margin-right: 220px;">
+					{{/eq}}
+						<br><br>
+						{{#eq language "en"}}
+                        <p style="text-align: left; font-size: 12px;"><strong>Information about the scheduled visits of {{visit.department}}, National Statistics and Information Authority</strong></p>
+						{{/eq}}
+						{{#eq language "dr"}}
+						<p style="text-align: right; font-size: 12px;"><strong>معلومات درباره ملاقات تنظیم شده مربوط ({{visit.department}}) اداره ملی احصائیه و معلومات</strong></p>
+						{{/eq}}
+						{{#eq language "ps"}}
+						<p style="text-align: right; font-size: 12px;"><strong>د احصائيې او معلوماتو ملی ادارې د ({{visit.department}}) اړوند تنظیم شوي ملاقاتونه</strong></p>
+						{{/eq}}
+						<br><br>
+					</div>
+                </div>
+                <div id="content">
+					{{#eq language "en"}}
+					<strong><p id="sno" style="text-align: left;"> Visit Details</p></strong>
+					{{/eq}}
+					{{#eq language "dr"}}
+					<strong><p id="sno" style="text-align: right;">معلومات ملاقات</p></strong>
+					{{/eq}}
+					{{#eq language "ps"}}
+					<strong><p id="sno" style="text-align: right;">د ملاقات معلومات</p></strong>
+					{{/eq}}
+					
+					{{#eq language "en"}}
+					<table style="margin-top: 0; padding-top: 0; direction: ltr; text-align: left;">
+					{{else}}
+					<table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+					{{/eq}}
+                        <tr>
+							{{#eq language "en"}}
+							<th>Host</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>میزبان</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>کوربه</th>
+							{{/eq}}
+							
+							{{#eq language "en"}}
+							<th>Source</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>مرجع</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>مرجع</th>
+							{{/eq}}
+							
+							{{#eq language "en"}}
+							<th>Category</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>کتګوری</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>کتګوري</th>
+							{{/eq}}
+
+							{{#eq language "en"}}
+							<th>Type</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>نوع</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>نوعیت</th>
+							{{/eq}}
+							
+							{{#eq language "en"}}
+							<th>Date</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>تاریخ</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>نېټه</th>
+							{{/eq}}
+							
+							{{#eq language "en"}}
+							<th>Time</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>وقت</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>وخت</th>
+							{{/eq}}
+							                            
+                        </tr>
+						<tr>
+							<td>{{visit.host}}</td>
+							<td>{{visit.source}}</td>
+							<td>
+								{{#eq language "en"}}
+								{{visit.type}}
+								{{/eq}}
+								{{#eq language "dr"}}
+								{{#eq visit.category "VIP"}}
+								خاص - VIP
+								{{/eq}}
+								{{#eq visit.category "NORMAL"}}
+								عادی
+								{{/eq}}
+								{{/eq}}
+								{{#eq language "ps"}}
+								{{#eq visit.category "VIP"}}
+								خاص - VIP
+								{{/eq}}
+								{{#eq visit.category "NORMAL"}}
+								عادی
+								{{/eq}}
+								{{/eq}}
+								
+							</td>
+							<td>
+								{{#eq language "en"}}
+								{{visit.category}}
+								{{/eq}}
+								{{#eq language "dr"}}
+								{{#eq visit.type "OFFICIAL"}}
+								رسمی
+								{{/eq}}
+								{{#eq visit.type "UNOFFICIAL"}}
+								غیر رسمی
+								{{/eq}}
+								{{/eq}}
+								{{#eq language "ps"}}
+								{{#eq visit.type "OFFICIAL"}}
+								رسمی
+								{{/eq}}
+								{{#eq visit.type "UNOFFICIAL"}}
+								غیر رسمی
+								{{/eq}}
+								{{/eq}}
+							<td>{{visit.visitDate}}</td>
+							<td>{{visit.visitTime}}</td>
+						</tr>
+                        
+						<tr>
+							{{#eq language "en"}}
+							<th>Subject</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>موضوع</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>موضوع</th>
+							{{/eq}}
+							
+							<td colspan="5">{{visit.subject}}</td>
+						</tr>
+
+						<tr>
+							{{#eq language "en"}}
+							<th>Remarks</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>ملاحظات</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>کتنه</th>
+							{{/eq}}
+							
+							<td colspan="5">{{visit.remarks}}</td>	
+						</tr>
+						
+                    </table>
+
+					<div class="row">
+						<div class="column" style="margin-bottom: -10px;">
+							<div id="content">
+								{{#eq language "en"}}
+								<strong><p id="sno" style="text-align: left;">Vehicle Details</p></strong>
+								{{/eq}}
+								{{#eq language "dr"}}
+								<strong><p id="sno" style="text-align: right;">معلومات وسایط نقلیه </p></strong>
+								{{/eq}}
+								{{#eq language "ps"}}
+								<strong><p id="sno" style="text-align: right;">د نقلیه وسایطو معلومات</p></strong>
+								{{/eq}}
+
+								{{#eq language "en"}}
+								<table style="margin-top: 0; padding-top: 0; direction: ltr; text-align: left;">
+								{{else}}
+								<table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+								{{/eq}}
+									<tr>
+										{{#eq language "en"}}
+										<th>SNo.</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>شماره</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>شماره</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Plate Number</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>نمبر پلیت</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>د پلیټ نمبر</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Model</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>مادل</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>ماډل</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Color</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>رنګ</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>رنګ</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Driver Name</th> 
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>اسم راننده</th> 
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>د چلوونکي نوم</th> 
+										{{/eq}}
+										                         
+									</tr>
+
+									{{#each vehicles as |veh index|}}
+									<tr>
+										<td>{{index}}</td>
+										<td>{{veh.plateNo}}</td>
+										<td>{{veh.modal}}</td>
+										<td>{{veh.color}}</td>
+										<td>{{veh.driverName}}</td>
+									</tr>
+									{{/each}}
+									
+								</table>
+							</div> 
+						</div>
+
+						<div class="column" style="margin-bottom: -10px;">
+							<div id="content">
+								{{#eq language "en"}}
+								<strong><p id="sno" style="text-align: left;">Visitor Details </p></strong>
+								{{/eq}}
+								{{#eq language "dr"}}
+								<strong><p id="sno" style="text-align: right;">معلومات مراجع کننده</p></strong>
+								{{/eq}}
+								{{#eq language "ps"}}
+								<strong><p id="sno" style="text-align: right;">د مراجعه کوونکو معلومات</p></strong>
+								{{/eq}}
+								
+								{{#eq language "en"}}
+								<table style="margin-top: 0; padding-top: 0; direction: ltr; text-align: left;">
+								{{else}}
+								<table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+								{{/eq}}
+									<tr>
+										{{#eq language "en"}}
+										<th>SNo.</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>شماره</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>شماره</th>
+										{{/eq}}
+
+										{{#eq language "en"}}
+										<th>Name</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>اسم</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>نوم</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Father Name</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>ولد/بنت</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>د پلار نوم</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Job</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>وظیفه</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>دنده</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Phone No.</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>شماره تماس</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>اړیکې شماره</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Is smart phone allowed?</th> 
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>اجازه به انتقال موبایل هوشمند؟</th> 
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>آیا دځیرک ټېلېفون اجازه لري؟</th> 
+										{{/eq}}
+										                           
+									</tr>
+
+									{{#each visitors as |vis index|}}
+									<tr>
+										<td>{{@index}}</td>
+										<td>{{vis.firstName}}&nbsp;{{vis.lastName}}</td>
+										<td>{{vis.fatherName}}</td>
+										<td>{{vis.designation}}</td>
+										<td>{{vis.phoneNo}}</td>
+										<td></td>
+									</tr>
+									{{/each}}
+									
+									
+								</table>
+							</div> 
+						</div>
+
+					</div>
+					{{#eq language "en"}}
+					<p id="footer-text" style="direction: ltr; text-align: left;">
+						<strong>Note: &nbsp;</strong>
+						We request from the security checkpoint of National Statistics and Information Authority to allow the requested persons and vehicles for entering to the office after their checkup.<br>
+						Hameedullah Pardess<br>
+						Director of Big Data Management
+					</p>
+					{{/eq}}
+					{{#eq language "dr"}}
+					<p id="footer-text" style="direction: rtl; text-align: right;">
+						<strong>نوت:&nbsp;</strong>
+						از پوسته امنیتی دروازه اداره ملی احصائیه و معلومات خواهشمندیم تا بعد از چک و بررسی همه جانبه به واسطه متذکره اجازه داخل شده به محوطه اداره داده شود.<br>
+						حمیدالله پردیس<br>
+						رئیس انسجام ارقام بزرګ
+					</p>
+					{{/eq}}
+					{{#eq language "ps"}}
+					<p id="footer-text" style="direction: rtl; text-align: right;">
+						<strong>نوټ: &nbsp;</strong>
+						د احصائيې او معلوماتو ملي ادارې له امنیتي ساتونکو څخه په درنښت غوښتنه کیږي چې له پلټنې او بررسي وروسته ذکر شوي افراد او وسایطو ته د داخلېدو اجازه ورکړي.<br>
+						حمیدالله پردیس<br>
+						د لوی ارقامو د تنظیم رئیس
+					</p>
+					{{/eq}}
+
+                </div>  
+            </div>
+        </div>
+    </div>
+
+
+	<div class="row" style="margin-top: 50px;">
+        <div class="column" style="width: 100%;">
+            <div class="body">
+                <div id="header">
+					{{#eq language "en"}}
+					<div style="width: 200px; height: 100px; float: left">
+					{{else}}
+					<div style="width: 200px; height: 100px; float: right">
+					{{/eq}}
+						<img src="{{{logoUri}}}">
+					</div>
+					{{#eq language "en"}}
+					<div style="margin-left: 220px;">
+					{{else}}
+					<div style="margin-right: 220px;">
+					{{/eq}}
+						<br><br>
+						{{#eq language "en"}}
+                        <p style="text-align: left; font-size: 12px;"><strong>Information about the scheduled visits of {{visit.department}}, National Statistics and Information Authority</strong></p>
+						{{/eq}}
+						{{#eq language "dr"}}
+						<p style="text-align: right; font-size: 12px;"><strong>معلومات درباره ملاقات تنظیم شده مربوط ({{visit.department}}) اداره ملی احصائیه و معلومات</strong></p>
+						{{/eq}}
+						{{#eq language "ps"}}
+						<p style="text-align: right; font-size: 12px;"><strong>د احصائيې او معلوماتو ملی ادارې د ({{visit.department}}) اړوند تنظیم شوي ملاقاتونه</strong></p>
+						{{/eq}}
+						<br><br>
+					</div>
+                </div>
+                <div id="content">
+					{{#eq language "en"}}
+					<strong><p id="sno" style="text-align: left;"> Visit Details</p></strong>
+					{{/eq}}
+					{{#eq language "dr"}}
+					<strong><p id="sno" style="text-align: right;">معلومات ملاقات</p></strong>
+					{{/eq}}
+					{{#eq language "ps"}}
+					<strong><p id="sno" style="text-align: right;">د ملاقات معلومات</p></strong>
+					{{/eq}}
+					
+					{{#eq language "en"}}
+					<table style="margin-top: 0; padding-top: 0; direction: ltr; text-align: left;">
+					{{else}}
+					<table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+					{{/eq}}
+                        <tr>
+							{{#eq language "en"}}
+							<th>Host</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>میزبان</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>کوربه</th>
+							{{/eq}}
+							
+							{{#eq language "en"}}
+							<th>Source</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>مرجع</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>مرجع</th>
+							{{/eq}}
+							
+							{{#eq language "en"}}
+							<th>Category</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>کتګوری</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>کتګوري</th>
+							{{/eq}}
+
+							{{#eq language "en"}}
+							<th>Type</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>نوع</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>نوعیت</th>
+							{{/eq}}
+							
+							{{#eq language "en"}}
+							<th>Date</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>تاریخ</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>نېټه</th>
+							{{/eq}}
+							
+							{{#eq language "en"}}
+							<th>Time</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>وقت</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>وخت</th>
+							{{/eq}}
+							                            
+                        </tr>
+						<tr>
+							<td>{{visit.host}}</td>
+							<td>{{visit.source}}</td>
+							<td>
+								{{#eq language "en"}}
+								{{visit.type}}
+								{{/eq}}
+								{{#eq language "dr"}}
+								{{#eq visit.category "VIP"}}
+								خاص - VIP
+								{{/eq}}
+								{{#eq visit.category "NORMAL"}}
+								عادی
+								{{/eq}}
+								{{/eq}}
+								{{#eq language "ps"}}
+								{{#eq visit.category "VIP"}}
+								خاص - VIP
+								{{/eq}}
+								{{#eq visit.category "NORMAL"}}
+								عادی
+								{{/eq}}
+								{{/eq}}
+								
+							</td>
+							<td>
+								{{#eq language "en"}}
+								{{visit.category}}
+								{{/eq}}
+								{{#eq language "dr"}}
+								{{#eq visit.type "OFFICIAL"}}
+								رسمی
+								{{/eq}}
+								{{#eq visit.type "UNOFFICIAL"}}
+								غیر رسمی
+								{{/eq}}
+								{{/eq}}
+								{{#eq language "ps"}}
+								{{#eq visit.type "OFFICIAL"}}
+								رسمی
+								{{/eq}}
+								{{#eq visit.type "UNOFFICIAL"}}
+								غیر رسمی
+								{{/eq}}
+								{{/eq}}
+							<td>{{visit.visitDate}}</td>
+							<td>{{visit.visitTime}}</td>
+						</tr>
+                        
+						<tr>
+							{{#eq language "en"}}
+							<th>Subject</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>موضوع</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>موضوع</th>
+							{{/eq}}
+							
+							<td colspan="5">{{visit.subject}}</td>
+						</tr>
+
+						<tr>
+							{{#eq language "en"}}
+							<th>Remarks</th>
+							{{/eq}}
+							{{#eq language "dr"}}
+							<th>ملاحظات</th>
+							{{/eq}}
+							{{#eq language "ps"}}
+							<th>کتنه</th>
+							{{/eq}}
+							
+							<td colspan="5">{{visit.remarks}}</td>	
+						</tr>
+						
+                    </table>
+
+					<div class="row">
+						<div class="column" style="margin-bottom: -10px;">
+							<div id="content">
+								{{#eq language "en"}}
+								<strong><p id="sno" style="text-align: left;">Vehicle Details</p></strong>
+								{{/eq}}
+								{{#eq language "dr"}}
+								<strong><p id="sno" style="text-align: right;">معلومات وسایط نقلیه </p></strong>
+								{{/eq}}
+								{{#eq language "ps"}}
+								<strong><p id="sno" style="text-align: right;">د نقلیه وسایطو معلومات</p></strong>
+								{{/eq}}
+
+								{{#eq language "en"}}
+								<table style="margin-top: 0; padding-top: 0; direction: ltr; text-align: left;">
+								{{else}}
+								<table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+								{{/eq}}
+									<tr>
+										{{#eq language "en"}}
+										<th>SNo.</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>شماره</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>شماره</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Plate Number</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>نمبر پلیت</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>د پلیټ نمبر</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Model</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>مادل</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>ماډل</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Color</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>رنګ</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>رنګ</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Driver Name</th> 
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>اسم راننده</th> 
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>د چلوونکي نوم</th> 
+										{{/eq}}
+										                         
+									</tr>
+
+									{{#each vehicles as |veh index|}}
+									<tr>
+										<td>{{index}}</td>
+										<td>{{veh.plateNo}}</td>
+										<td>{{veh.modal}}</td>
+										<td>{{veh.color}}</td>
+										<td>{{veh.driverName}}</td>
+									</tr>
+									{{/each}}
+									
+								</table>
+							</div> 
+						</div>
+
+						<div class="column" style="margin-bottom: -10px;">
+							<div id="content">
+								{{#eq language "en"}}
+								<strong><p id="sno" style="text-align: left;">Visitor Details </p></strong>
+								{{/eq}}
+								{{#eq language "dr"}}
+								<strong><p id="sno" style="text-align: right;">معلومات مراجع کننده</p></strong>
+								{{/eq}}
+								{{#eq language "ps"}}
+								<strong><p id="sno" style="text-align: right;">د مراجعه کوونکو معلومات</p></strong>
+								{{/eq}}
+								
+								{{#eq language "en"}}
+								<table style="margin-top: 0; padding-top: 0; direction: ltr; text-align: left;">
+								{{else}}
+								<table style="margin-top: 0; padding-top: 0; direction: rtl; text-align: right;">
+								{{/eq}}
+									<tr>
+										{{#eq language "en"}}
+										<th>SNo.</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>شماره</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>شماره</th>
+										{{/eq}}
+
+										{{#eq language "en"}}
+										<th>Name</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>اسم</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>نوم</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Father Name</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>ولد/بنت</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>د پلار نوم</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Job</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>وظیفه</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>دنده</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Phone No.</th>
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>شماره تماس</th>
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>اړیکې شماره</th>
+										{{/eq}}
+										
+										{{#eq language "en"}}
+										<th>Is smart phone allowed?</th> 
+										{{/eq}}
+										{{#eq language "dr"}}
+										<th>اجازه به انتقال موبایل هوشمند؟</th> 
+										{{/eq}}
+										{{#eq language "ps"}}
+										<th>آیا دځیرک ټېلېفون اجازه لري؟</th> 
+										{{/eq}}
+										                           
+									</tr>
+
+									{{#each visitors as |vis index|}}
+									<tr>
+										<td>{{@index}}</td>
+										<td>{{vis.firstName}}&nbsp;{{vis.lastName}}</td>
+										<td>{{vis.fatherName}}</td>
+										<td>{{vis.designation}}</td>
+										<td>{{vis.phoneNo}}</td>
+										<td></td>
+									</tr>
+									{{/each}}
+									
+									
+								</table>
+							</div> 
+						</div>
+
+					</div>
+					{{#eq language "en"}}
+					<p id="footer-text" style="direction: ltr; text-align: left;">
+						<strong>Note: &nbsp;</strong>
+						We request from the security checkpoint of National Statistics and Information Authority to allow the requested persons and vehicles for entering to the office after their checkup.<br>
+						Hameedullah Pardess<br>
+						Director of Big Data Management
+					</p>
+					{{/eq}}
+					{{#eq language "dr"}}
+					<p id="footer-text" style="direction: rtl; text-align: right;">
+						<strong>نوت:&nbsp;</strong>
+						از پوسته امنیتی دروازه اداره ملی احصائیه و معلومات خواهشمندیم تا بعد از چک و بررسی همه جانبه به واسطه متذکره اجازه داخل شده به محوطه اداره داده شود.<br>
+						حمیدالله پردیس<br>
+						رئیس انسجام ارقام بزرګ
+					</p>
+					{{/eq}}
+					{{#eq language "ps"}}
+					<p id="footer-text" style="direction: rtl; text-align: right;">
+						<strong>نوټ: &nbsp;</strong>
+						د احصائيې او معلوماتو ملي ادارې له امنیتي ساتونکو څخه په درنښت غوښتنه کیږي چې له پلټنې او بررسي وروسته ذکر شوي افراد او وسایطو ته د داخلېدو اجازه ورکړي.<br>
+					</p>
+					{{/eq}}
+
+                </div>  
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

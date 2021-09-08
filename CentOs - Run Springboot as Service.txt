@@ -1,0 +1,185 @@
+update the DNF package repository cache
+- sudo dnf update -y
+- sudo dnf makecache
+
+Listing All Available Packages
+- sudo dnf list --all
+
+- sudo dnf install wget
+- sudo dnf install nano
+- sudo dnf install unzip
+
+
+Install Java
+- sudo dnf install java-11-openjdk
+
+
+- sudo dnf install nginx
+
+- sudo systemctl enable nginx
+- sudo systemctl start nginx
+- sudo systemctl status nginx
+
+content directory
+cd /usr/share/nginx/
+
+Server Configuration directory
+cd /etc/nginx
+
+check status of firewall
+- systemctl status firewalld
+
+
+sudo nano /etc/nginx/nginx.conf
+# Add these lines to the end of the http {} block:
+include /etc/nginx/sites-enabled/*.conf;
+server_names_hash_bucket_size 64;
+
+sudo mkdir sites-available
+sudo mkdir sites-enabled
+sudo touch sites-available/officems.conf
+sudo nano sites-available/officems.conf
+
+###################################
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    access_log /var/log/nginx/officems-access.log;
+    error_log /var/log/nginx/officems-error.log;
+
+    # This is the path for dist file angular applicaiton
+    root /usr/share/nginx/officems_web;
+
+    location / {
+            try_files $uri $uri/ /index.html;
+    }
+
+    location /api/ {
+            proxy_pass http://127.0.0.1:8080/api/;
+    }
+}
+###################################
+
+sudo ln -s /etc/nginx/sites-available/officems.conf /etc/nginx/sites-enabled/
+
+sudo systemctl restart nginx
+sudo nginx -t
+
+sudo setsebool -P httpd_can_network_connect 1
+
+
+# Postgresql installation
+sudo dnf install postgresql-server
+sudo postgresql-setup --initdb
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+sudo systemctl restart postgresql.service
+sudo systemctl status postgresql
+
+
+sudo nano /var/lib/pgsql/data/postgresql.conf
+listen_addresses = '*'
+
+
+sudo nano /var/lib/pgsql/data/pg_hba.conf
+host    all             all	        0.0.0.0/0	        md5
+host    all             all             127.0.0.1/32            md5
+
+
+- sudo su - postgres
+- psql
+- CREATE DATABASE officems;
+- CREATE ROLE officems_user LOGIN PASSWORD 'secretAbc';
+----- create user officems_user with encrypted password 'secretAbc';
+----- ALTER USER officems_user with encrypted password 'secretAbc';
+- GRANT CONNECT ON DATABASE officems TO officems_user;
+- grant all privileges on database officems to officems_user;
+
+- connect to database: \c officems;
+- GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO officems_user;
+- GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO officems_user;
+- GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO officems_user;
+- GRANT ALL PRIVILEGES ON SCHEMA public TO officems_user;
+- ALTER SCHEMA public OWNER TO officems_user;
+
+
+
+Install wkhtmltopdf & wkhtmltoimage
+- wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos8.x86_64.rpm
+- sudo dnf localinstall wkhtmltox-0.12.6-1.centos8.x86_64.rpm
+- wkhtmltopdf --version
+- wkhtmltoimage --version
+
+
+
+sudo mkdir /var/officems
+sudo mkdir /var/officems/logs
+# sudo touch /var/officems/officems.conf
+
+sudo useradd bigdata_user
+
+sudo touch /etc/systemd/system/officems.service
+sudo nano /etc/systemd/system/officems.service
+--------------------------------------------------------
+[Unit]
+Description= OfficeMS Application
+After=syslog.target
+
+[Service]
+User=bigdata_user
+ExecStart=/usr/bin/java -jar /var/officems/officems.jar
+SuccessExitStatus=143
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------------------------------
+
+
+sudo mkdir /upload
+sudo mkdir /upload/tmp
+sudo mkdir /upload/reception
+sudo mkdir /upload/reception/visitors
+sudo mkdir /upload/reception/vehicles
+sudo mkdir /upload/profile
+sudo mkdir /upload/avatar
+sudo mkdir /upload/doc_mng
+sudo mkdir /upload/doc_mng/documents
+sudo mkdir /upload/doc_mng/gallery
+sudo mkdir /upload/task_mng
+sudo mkdir /upload/task_mng/tasks
+sudo chown -R bigdata_user:bigdata_user /upload
+
+
+sudo service officems stop &&
+sudo rm -rf /var/officems/officems.jar &&
+sudo mv ~/officems.jar /var/officems/ &&
+sudo chown bigdata_user:bigdata_user /var/officems/officems.jar &&
+sudo chmod 500 /var/officems/officems.jar &&
+sudo systemctl enable officems.service &&
+sudo systemctl daemon-reload &&
+sudo service officems start
+
+## Logs
+sudo journalctl -u officems.service
+sudo journalctl -u officems.service -f
+
+
+
+
+
+
+
+########### Client side
+
+sudo rm -rf /usr/share/nginx/dist
+sudo rm -rf /usr/share/nginx/dist.zip
+sudo rm -rf /usr/share/nginx/officems_web
+
+
+sudo mv ~/dist.zip /usr/share/nginx/
+cd /usr/share/nginx/
+sudo unzip /usr/share/nginx/dist.zip
+sudo mv ./dist ./officems_web
